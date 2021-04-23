@@ -28,7 +28,12 @@ next()
 }
 
 exports.checkAccountNameUnique = (req, res, next) => {
-  
+  if (req.body.name) {
+    res.status(400).json({
+      message: "Name already exists"
+    })
+  }
+  next()
 }
 
 exports.checkAccountId = (req, res, next) => {
@@ -37,4 +42,5 @@ exports.checkAccountId = (req, res, next) => {
        message: "account not found"
      })
    }
+   next()
 }
